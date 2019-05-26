@@ -1,0 +1,38 @@
+1.联合体方法
+#include<stdio.h>
+int main()
+{
+	union un 
+	{
+		char a;
+		int b;
+	};
+	union un un;
+	un.b = 1;
+	printf("%d",un.a);
+	system("pause");
+	return 0;
+}
+
+
+2.存储方法
+#include <stdio.h> 
+int check_sys() 
+{    
+    int i = 1;    
+    return (*(char *)&i); 
+} 
+int main()
+{    
+    int ret = check_sys();    
+    if(ret == 1)    
+    {        
+        printf("该电脑是小端\n");    
+    }    
+    else    
+    {        
+        printf("该电脑是大端\n");    
+    }    
+    system("pause");
+    return 0; 
+}
