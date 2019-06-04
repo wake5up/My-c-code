@@ -1,197 +1,209 @@
-    1.实现strcpy替换
-    #include<stdio.h>
-    #include<assert.h>
-
-    char my_strcpy(char *dest, const char *src)
+#include<stdio.h>
+char my_strcpy(char *dest, const char *src)//实现strcpy
+{
+    assert(dest);
+    assert(src);
+    while (*src)
     {
-      assert(dest);
-      assert(src);
-      while (*src)
-      {
         *dest = *src;
         dest++;
         src++;
-      }
     }
+    *dest = '\0';
+}
 
-    int main()
-    {
-      char dest[20] ="1234567890";
-      char src []= "abcdef";
-      my_strcpy(dest, src);
-      printf("%s\n", dest);
-      system("pause");
-      return 0;
-    }
-    2.实现strcat拼接
-    #include<stdio.h>
-    #include<assert.h>
+int main()
+{
+    char dest[20] ="1234567890";
+    char src []= "abcdef";
+    my_strcpy(dest, src);
+    printf("%s\n", dest);
+    system("pause");
+    return 0;
+}
 
-    char my_strcat(char *dest, const char *src)
+
+#include<stdio.h>
+#include<assert.h>
+
+char my_strcat(char *dest, const char *src)//实现strcat
+{
+    assert(dest);
+    assert(src);
+    while (*dest != '\0')
     {
-      while (*dest != '\0')
-      {
         dest++;
-      }
-      while (*src != '\0')
-      {
+    }
+    while (*src != '\0')
+    {
         *dest = *src;
         dest++;
         src++;
-      }
     }
-    int main()
+}
+int main()
+{
+    char dest[20] = "1234567890";
+    char src []= "abcdef";
+    my_strcat(dest, src);
+    printf("%s", dest);
+    system("pause");
+    return 0;
+}
+
+
+#include<stdio.h>
+const char *Mystrchr(const char *src, char ch)//实现strchr
+{
+    while (*src != '\0')
     {
-      char dest[20] = "1234567890";
-      char src []= "abcdef";
-      my_strcat(dest, src);
-      printf("%s", dest);
-      system("pause");
-      return 0;
+        if (*src == ch)
+        {
+            return src;
+        }
+        src++;
     }
+    return NULL;
+}
+int main()
+{
+    char str[10] = "abcdefg";
+    char a = 'b';
+    printf("%s", Mystrchr(str,a));
+    system("pause");
+    return 0;
+}
 
-      3.实现strstr  
-    #include<stdio.h>
-    #include<assert.h>
 
-    int my_strstr(char *dest, const char *src)
+#include<stdio.h>
+#include<assert.h>
+
+const char *My_strstr(const char *str1, const char *str2)实现strstr
+{
+    const char *s1 = NULL;
+    const char *s2 = NULL;
+    const char *start = str1;
+    while (*start != '\0')
     {
-      assert(dest);
-      assert(src);
-      while (*dest!=*src)
-      {
-        dest++;
-      }
-      while (*src != '\0'&&*dest!='\0')
-      {
-        if (*dest == *src)
+        s1 = start;//s1回退到上一次的下一个位置
+        s2 = str2;//s2回退到str2的起始位置
+        while (*s1 != '\0' && *s2 != '\0'&&*s1 == *s2)
         {
-          dest++;
-          src++;
+            s1++;
+            s2++;
         }
-        else
+        if (*s1 == '\0')
         {
-          return 0;
+            return NULL;
         }
-      }
-      if (*dest == '\0')
-      {
+        if (*s2 == '\0')
+        {
+            return start;
+        }
+        start++;
+    }
+    return NULL;
+}
+
+int main()
+{
+    char dest[20] = "123aabcdef90";
+    char src []= "abcdef";
+    printf("%s\n", My_strstr(dest, src));
+    system("pause");
+    return 0;
+}
+
+
+#include<stdio.h>
+#include<assert.h>
+
+int* my_strcmp(char *dest, const char *src)实现strcmp
+{
+    assert(dest);
+    assert(src);
+        while (*dest != '\0'&&*src!='\0')
+        {
+            if (*dest == *src)
+            {
+                dest++;
+                src++;
+            }
+            else if (*dest > *src)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
         return 0;
-      }
-      return 1;
-    }
-
-    int main()
-    {
-      char dest[20] = "12abcdef90";
-      char src []= "abcdef";
-      int ret = my_strstr(dest, src);
-      if (1 == ret)
-      {
-        printf("找到了！\n");
-      }
-      else
-      {
-        printf("没找到！\n");
-      }
-      system("pause");
-      return 0;
-    }
-    4.实现strchr
-    
-    6.实现memcpy替换n个字符
-    #include<stdio.h>
-    #include<assert.h>
-
-    char my_memcpy(char *dest, const char *src,int n)
-    {
-      assert(dest);
-      assert(src);
-      while (n>0)
-      {
-        *dest = *src;
-        dest++;
-        src++;
-        n--;
-      }
-    }
-
-    int main()
-    {
-      char dest[20] = "1234567890";
-      char src[] = "abcdef";
-      int n = 3;
-      my_memcpy(dest, src,n);
-      printf("%s\n", dest);
-      system("pause");
-      return 0;
-    }
-    7.实现memmove
-
-8.实现strncmp
-#include<stdio.h>
-
-int My_strncmp(char* str1, char* str2, int n)
-{
-	while (n--)
-	{
-		if (*str1 > *str2)
-		{
-			return 1;
-		}
-		else if (*str1 < *str2)
-		{
-			return -1;
-		}
-		else
-		{
-			str1++;
-			str2++;
-		}
-	}
-	return 0;
 }
 int main()
 {
-	char str1[] = "abcdefg";
-	char str2[] = "abcx";
-	int ret = My_strncmp(str1, str2, 4);
-	if (1 == ret)
-	{
-		printf("str1>str2");
-	}
-	else if (0 == ret)
-	{
-		printf("str1=str2");
-	}
-	else
-	{
-		printf("str1<str2");
-	}
-	system("pause");
-	return 0;
+    char dest[] = "abcdef";
+    char src []= "adcdef";
+    int ret = my_strcmp(dest, src);
+    printf("%d",ret);
+    system("pause");
+    return 0;
 }
-9.实现strncat
-#include<stdio.h>
 
-void My_strncat(char* str1, char* str2, int n)
+
+#include<stdio.h>
+#include<assert.h>
+
+void *Mymemcpy(void *dest, const void *src, int count)//实现mencpy
 {
-	while (*str1 != '\0')
-	{
-		str1++;
-	}
-	while (n--)
-	{
-		*str1++ = *str2++;
-	}
+    while (count != 0)
+    {
+        *((char*)dest) = *((char*)src);
+        ((char*)dest)++;
+        ((char*)src)++;
+        count--;
+    }
 }
+
 int main()
 {
-	char str1[20] = "abcdefg";
-	char str2[] = "1234567";
-	My_strncat(str1, str2, 4);
-	printf("%s",str1);
-	system("pause");
-	return 0;
+    int arr[10] = {1,2,3,4,5,6,7,8,9};
+    int arr2[10] = {0};
+    int i = 0;
+    Mymemcpy(arr2,arr,16);
+    for (; i < 10; i++)
+    {
+        printf("%d",arr2[i]);
+    }
+    system("pause");
+    return 0;
 }
 
+
+#include<stdio.h>
+#include<assert.h>
+
+void *Mymemcpy(void *dest, const void *src, int count)//实现memcpy//count是字节数
+{
+    while (count != 0)
+    {
+        *((char*)dest) = *((char*)src);
+        ((char*)dest)++;
+        ((char*)src)++;
+        count--;
+    }
+}
+
+int main()
+{
+    int arr[10] = {1,2,3,4,5,6,7,8,9};
+    int arr2[10] = {0};
+    int i = 0;
+    Mymemcpy(arr2,arr,16);
+    for (; i < 10; i++)
+    {
+        printf("%d",arr2[i]);
+    }
+    system("pause");
+    return 0;
+}
