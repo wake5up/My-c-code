@@ -1,6 +1,7 @@
 1.联合体方法
 #include<stdio.h>
 int main()
+
 {
 	union un 
 	{
