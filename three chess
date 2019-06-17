@@ -19,7 +19,6 @@ void PlayerMove(char board[][COL], int row, int col);
 #endif
 
 
-
 #include "three_chess.h"
 
 void ShowUI()
