@@ -1,0 +1,23 @@
+#include<stdio.h>
+
+int main()
+{
+	int n, m;
+	int sum = 0;
+	scanf("%d%d", &n, &m);
+	int i = 0;
+	for (i = n; i; i /= m)//逆序
+	{
+		sum = sum * 10 + i % m;
+	}
+	if (sum == n)
+	{
+		printf("%d在%d进制下是回文数\n",n,m);
+	}
+	else
+	{
+		printf("%d在%d进制下不是回文数\n", n, m);
+	}
+	system("pause");
+	return 0;
+}
