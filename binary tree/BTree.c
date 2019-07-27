@@ -2,7 +2,10 @@
 
 #include "BTree.h"
 #include"queue.h"
+<<<<<<< HEAD
 #include"stack.h"
+=======
+>>>>>>> e1caecfd4bbd6c79da02d1103f84d6994968cf96
 
 BTNode* BinaryTreeCreate(BTDataType* a)
 {
@@ -72,6 +75,7 @@ void BinaryTreeLevelOrder(BTNode* root)//层序——》广度遍历排序
 	QueueDestory(&qu);
 }
 
+<<<<<<< HEAD
 //非递归，用栈实现层序(前序)
 //1.打印根
 //2.如果它有右孩子，那么让有孩子进栈，如果它有左孩子，那么直接进入左孩子
@@ -344,6 +348,9 @@ void BinaryTreeDesotry(BTNode* root)
 		BinaryTreeDesotry(right);
 	}
 }
+=======
+
+>>>>>>> e1caecfd4bbd6c79da02d1103f84d6994968cf96
 
 
 
