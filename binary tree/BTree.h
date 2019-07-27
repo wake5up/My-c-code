@@ -17,7 +17,12 @@ BTNode* BinaryTreeCreate(BTDataType* a);
 void BinaryTreePrevOrder(BTNode* root);
 void BinaryTreeInOrder(BTNode* root);
 void BinaryTreePostOrder(BTNode* root);
-
 void BinaryTreeLevelOrder(BTNode* root);
+
+void BinaryTreePrevOrderNonR(BTNode* root);
+void BinaryTreeInOrderNonR(BTNode* root);
+void BinaryTreePostOrderNonR(BTNode* root);
+
+int BinaryTreeComplete(BTNode* root);
 
 #endif
