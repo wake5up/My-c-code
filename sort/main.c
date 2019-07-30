@@ -24,5 +24,10 @@ int main()
 	QSort(a, ARRSIZE(a));
 	printArray(a, ARRSIZE(a));
 
+	HQSort(a, ARRSIZE(a));
+	printArray(a, ARRSIZE(a));
+
+	ShellSort(a, ARRSIZE(a));
+	printArray(a, ARRSIZE(a));
 	return 0;
 }
