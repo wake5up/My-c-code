@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+
+int find(int arr[4][4], int data)
+{
+	int row = 0, col = 3;
+	while (row<4 && col >= 0)
+	{
+		if (arr[row][col] < data)
+		{
+			row++;
+		}
+		else if (arr[row][col]>data)
+		{
+			col--;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+int main()
+{
+	int arr[4][4] = { { 1, 2, 8, 9 }, { 2, 4, 9, 12 }, { 4, 7, 10, 13 }, { 6, 8, 11, 15 } };
+	int data = 0;
+	scanf("%d",&data);
+	int ret=find(arr, data);
+	ret ? (printf("找到了")) : (printf("没找到"));
+	return 0;
+}
